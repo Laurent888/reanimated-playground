@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import {PanGestureHandler} from 'react-native-gesture-handler';
 import Animated, {
   useAnimatedGestureHandler,
   useAnimatedStyle,
@@ -7,9 +8,32 @@ import Animated, {
 } from 'react-native-reanimated';
 
 const DragNDrop = () => {
+  const translationX = useSharedValue(0);
+  const translationY = useSharedValue(0);
+
+  const onGestureEvent = useAnimatedGestureHandler({
+    onStart: (_, ctx) => {
+      ctx.offsetX = translationX.value;
+      ctx.offsetY = translationY.value;
+    },
+    onActive: (e, ctx) => {
+      translationX.value = ctx.offsetX + e.translationX;
+      translationY.value = ctx.offsetY + e.translationY;
+    },
+  });
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [
+      {translateX: translationX.value},
+      {translateY: translationY.value},
+    ],
+  }));
+
   return (
-    <View>
-      <Text>Drag n drop</Text>
+    <View style={styles.container}>
+      <PanGestureHandler onGestureEvent={onGestureEvent}>
+        <Animated.View style={[styles.box, animatedStyle]} />
+      </PanGestureHandler>
     </View>
   );
 };
@@ -21,6 +45,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#2b2d42',
   },
   box: {
     width: 100,
