@@ -5,6 +5,7 @@ import Animated, {
   useAnimatedGestureHandler,
   useAnimatedStyle,
   useSharedValue,
+  withSpring,
 } from 'react-native-reanimated';
 
 const DragNDrop = () => {
@@ -19,6 +20,10 @@ const DragNDrop = () => {
     onActive: (e, ctx) => {
       translationX.value = ctx.offsetX + e.translationX;
       translationY.value = ctx.offsetY + e.translationY;
+    },
+    onEnd: (e, ctx) => {
+      translationX.value = withSpring(0, {damping: 12, stiffness: 120});
+      translationY.value = withSpring(0, {damping: 12, stiffness: 120});
     },
   });
 
