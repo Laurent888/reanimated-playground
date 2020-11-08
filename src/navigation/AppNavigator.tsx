@@ -4,12 +4,15 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Choices from '../screens/Choices';
 import DragNDrop from '../screens/DragNDrop';
 import Slider from '../screens/Slider';
+import Circle from '../screens/Circle';
+import BarGraph from '../screens/BarGraph';
 
 export type MainStackProps = {
   Choices: undefined;
   dragNDrop: undefined;
   Slider: undefined;
-  Slider1: undefined;
+  Circle: undefined;
+  BarGraph: undefined;
 };
 
 const Stack = createStackNavigator<MainStackProps>();
@@ -24,6 +27,12 @@ const AppNavigator = () => {
       />
       <Stack.Screen name="dragNDrop" component={DragNDrop} />
       <Stack.Screen name="Slider" component={Slider} />
+      <Stack.Screen name="Circle" component={Circle} />
+      <Stack.Screen
+        name="BarGraph"
+        component={BarGraph}
+        options={{gestureEnabled: false}}
+      />
     </Stack.Navigator>
   );
 };
