@@ -15,6 +15,7 @@ const Choices: React.FC<ChoicesProps> = ({navigation}) => {
         label="DragNDrop"
         onPress={() => navigation.navigate('dragNDrop')}
       />
+      <RowButton label="Slider" onPress={() => navigation.navigate('Slider')} />
     </View>
   );
 };
