@@ -4,15 +4,15 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Choices from '../screens/Choices';
 import DragNDrop from '../screens/DragNDrop';
 import Slider from '../screens/Slider';
-import Circle from '../screens/Circle';
 import BarGraph from '../screens/BarGraph';
-import Svg from '../screens/Svg';
+import SvgNavigator from './SvgNavigator';
+import PieChart from '../screens/PieChart';
 
 export type MainStackProps = {
   Choices: undefined;
   dragNDrop: undefined;
   Slider: undefined;
-  Circle: undefined;
+  PieChart: undefined;
   BarGraph: undefined;
   Svg: undefined;
 };
@@ -29,17 +29,13 @@ const AppNavigator = () => {
       />
       <Stack.Screen name="dragNDrop" component={DragNDrop} />
       <Stack.Screen name="Slider" component={Slider} />
-      <Stack.Screen name="Circle" component={Circle} />
+      <Stack.Screen name="PieChart" component={PieChart} />
       <Stack.Screen
         name="BarGraph"
         component={BarGraph}
         options={{gestureEnabled: false}}
       />
-      <Stack.Screen
-        name="Svg"
-        component={Svg}
-        options={{gestureEnabled: false}}
-      />
+      <Stack.Screen name="Svg" component={SvgNavigator} />
     </Stack.Navigator>
   );
 };

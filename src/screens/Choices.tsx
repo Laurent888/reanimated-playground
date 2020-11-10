@@ -16,7 +16,10 @@ const Choices: React.FC<ChoicesProps> = ({navigation}) => {
         onPress={() => navigation.navigate('dragNDrop')}
       />
       <RowButton label="Slider" onPress={() => navigation.navigate('Slider')} />
-      <RowButton label="Circle" onPress={() => navigation.navigate('Circle')} />
+      <RowButton
+        label="Pie Chart"
+        onPress={() => navigation.navigate('PieChart')}
+      />
       <RowButton
         label="Bar Graph"
         onPress={() => navigation.navigate('BarGraph')}

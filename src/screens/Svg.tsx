@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Button, StyleSheet, View} from 'react-native';
 import Animated, {
   useSharedValue,
@@ -9,6 +9,7 @@ import Animated, {
   withSpring,
 } from 'react-native-reanimated';
 import {Svg, Circle} from 'react-native-svg';
+import Container from '../components/Container';
 
 const SvgScreen = () => {
   const rotationZ = useSharedValue(0);
@@ -31,7 +32,7 @@ const SvgScreen = () => {
   });
 
   return (
-    <View style={styles.container}>
+    <Container>
       <Animated.View style={[styles.svgContainer, rotateAnimation]}>
         <Svg height="200" width="200" viewBox="0 0 200 200">
           <Circle
@@ -72,19 +73,13 @@ const SvgScreen = () => {
         <Button title="Start rotation" onPress={startRotation} />
         <Button title="Reset" onPress={reset} />
       </View>
-    </View>
+    </Container>
   );
 };
 
 export default SvgScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-  },
   svgContainer: {
     width: 200,
     height: 200,
