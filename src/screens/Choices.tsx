@@ -21,6 +21,7 @@ const Choices: React.FC<ChoicesProps> = ({navigation}) => {
         label="Bar Graph"
         onPress={() => navigation.navigate('BarGraph')}
       />
+      <RowButton label="Svg" onPress={() => navigation.navigate('Svg')} />
     </View>
   );
 };

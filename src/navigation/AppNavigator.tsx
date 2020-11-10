@@ -6,6 +6,7 @@ import DragNDrop from '../screens/DragNDrop';
 import Slider from '../screens/Slider';
 import Circle from '../screens/Circle';
 import BarGraph from '../screens/BarGraph';
+import Svg from '../screens/Svg';
 
 export type MainStackProps = {
   Choices: undefined;
@@ -13,6 +14,7 @@ export type MainStackProps = {
   Slider: undefined;
   Circle: undefined;
   BarGraph: undefined;
+  Svg: undefined;
 };
 
 const Stack = createStackNavigator<MainStackProps>();
@@ -31,6 +33,11 @@ const AppNavigator = () => {
       <Stack.Screen
         name="BarGraph"
         component={BarGraph}
+        options={{gestureEnabled: false}}
+      />
+      <Stack.Screen
+        name="Svg"
+        component={Svg}
         options={{gestureEnabled: false}}
       />
     </Stack.Navigator>
