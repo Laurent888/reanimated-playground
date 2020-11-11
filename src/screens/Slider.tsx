@@ -66,13 +66,13 @@ const styles = StyleSheet.create({
   },
   sliderTrack: {
     width: 300,
-    height: 20,
+    height: 9,
     borderRadius: 10,
     backgroundColor: '#ffe5d9',
   },
   knob: {
-    width: 20,
-    height: 40,
+    width: 30,
+    height: 30,
     borderRadius: 15,
     backgroundColor: '#ee6c4d',
   },

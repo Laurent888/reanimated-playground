@@ -7,6 +7,7 @@ import Slider from '../screens/Slider';
 import BarGraph from '../screens/BarGraph';
 import SvgNavigator from './SvgNavigator';
 import PieChart from '../screens/PieChart';
+import AwwSlider from '../screens/AwwSlider';
 
 export type MainStackProps = {
   Choices: undefined;
@@ -15,6 +16,7 @@ export type MainStackProps = {
   PieChart: undefined;
   BarGraph: undefined;
   Svg: undefined;
+  AwwSlider: undefined;
 };
 
 const Stack = createStackNavigator<MainStackProps>();
@@ -36,6 +38,11 @@ const AppNavigator = () => {
         options={{gestureEnabled: false}}
       />
       <Stack.Screen name="Svg" component={SvgNavigator} />
+      <Stack.Screen
+        name="AwwSlider"
+        component={AwwSlider}
+        options={{gestureEnabled: false}}
+      />
     </Stack.Navigator>
   );
 };

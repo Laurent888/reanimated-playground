@@ -17,6 +17,7 @@ const AnimatedText = ({text}) => {
       editable={false}
       value={text.value}
       animatedProps={animatedProps}
+      style={{fontSize: 25, color: '#000'}}
     />
   );
 };
