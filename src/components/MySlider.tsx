@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {LayoutChangeEvent, StyleSheet, View} from 'react-native';
-import {PanGestureHandler} from 'react-native-gesture-handler';
+import {PanGestureHandler, TextInput} from 'react-native-gesture-handler';
+import throttle from 'lodash.throttle';
 import Animated, {
   useSharedValue,
   useAnimatedGestureHandler,
@@ -45,6 +46,7 @@ interface MySliderProps {
   maxValue: number;
   onChange?: (val: number | string) => void;
   onComplete?: (val: number | string) => void;
+  value?: number;
 }
 
 const MySlider: React.FC<MySliderProps> = ({
@@ -54,21 +56,22 @@ const MySlider: React.FC<MySliderProps> = ({
   progressColor = DEFAULT_ACTIVE_COLOR,
   minValue = 0,
   maxValue = 100,
-  onChange,
   onComplete,
+  onChange,
+  value,
 }) => {
-  const [value, setValue] = useState(0);
   const [trackWidth, setTrackWidth] = useState<number | undefined>(undefined);
 
   const translationX = useSharedValue(0);
 
-  const _onComplete = () => {
-    setValue(Number(translationX.value));
-    onComplete(Number(calculatedValue.value));
-  };
-
   const _onChange = () => {
     onChange(Number(calculatedValue.value));
+  };
+
+  const _onComplete = () => {
+    if (onComplete) {
+      onComplete(Number(calculatedValue.value));
+    }
   };
 
   const onGestureEvent = useAnimatedGestureHandler({
