@@ -9,6 +9,8 @@ import SvgNavigator from './SvgNavigator';
 import PieChart from '../screens/PieChart';
 import AwwSlider from '../screens/AwwSlider';
 import Practice from '../screens/Practice';
+import Pullios from '../screens/Pullios';
+import Carousel from '../screens/Carousel';
 
 export type MainStackProps = {
   Choices: undefined;
@@ -19,6 +21,8 @@ export type MainStackProps = {
   Svg: undefined;
   AwwSlider: undefined;
   Practice: undefined;
+  Pullios: undefined;
+  Carousel: undefined;
 };
 
 const Stack = createStackNavigator<MainStackProps>();
@@ -48,6 +52,16 @@ const AppNavigator = () => {
       <Stack.Screen
         name="Practice"
         component={Practice}
+        options={{gestureEnabled: false}}
+      />
+      <Stack.Screen
+        name="Pullios"
+        component={Pullios}
+        options={{gestureEnabled: false}}
+      />
+      <Stack.Screen
+        name="Carousel"
+        component={Carousel}
         options={{gestureEnabled: false}}
       />
     </Stack.Navigator>

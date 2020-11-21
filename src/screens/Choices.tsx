@@ -33,6 +33,14 @@ const Choices: React.FC<ChoicesProps> = ({navigation}) => {
         label="Practice"
         onPress={() => navigation.navigate('Practice')}
       />
+      <RowButton
+        label="PullIos"
+        onPress={() => navigation.navigate('Pullios')}
+      />
+      <RowButton
+        label="Carousel"
+        onPress={() => navigation.navigate('Carousel')}
+      />
     </View>
   );
 };
