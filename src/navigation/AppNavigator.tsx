@@ -11,6 +11,7 @@ import AwwSlider from '../screens/AwwSlider';
 import Practice from '../screens/Practice';
 import Pullios from '../screens/Pullios';
 import Carousel from '../screens/Carousel';
+import ShowList from '../screens/ShowList';
 
 export type MainStackProps = {
   Choices: undefined;
@@ -23,6 +24,7 @@ export type MainStackProps = {
   Practice: undefined;
   Pullios: undefined;
   Carousel: undefined;
+  ShowList: undefined;
 };
 
 const Stack = createStackNavigator<MainStackProps>();
@@ -62,6 +64,11 @@ const AppNavigator = () => {
       <Stack.Screen
         name="Carousel"
         component={Carousel}
+        options={{gestureEnabled: false}}
+      />
+      <Stack.Screen
+        name="ShowList"
+        component={ShowList}
         options={{gestureEnabled: false}}
       />
     </Stack.Navigator>
