@@ -8,6 +8,7 @@ import Animated, {
   Easing,
   useDerivedValue,
   interpolate,
+  withSpring,
 } from 'react-native-reanimated';
 import faker from 'faker';
 
@@ -43,7 +44,7 @@ const OFFSET = 100;
 const DATA = new Array(10).fill(0).map(() => ITEM());
 
 const ListItem: React.FC<ListItemProps> = ({text, transY, index, offset}) => {
-  const delay = useDerivedValue(() => index * 40);
+  const delay = useDerivedValue(() => index * 100);
 
   const animatedStyle = useAnimatedStyle(() => {
     const opacity = interpolate(transY.value, [0, 100], [1, 0]);
@@ -53,9 +54,9 @@ const ListItem: React.FC<ListItemProps> = ({text, transY, index, offset}) => {
         {
           translateY: withDelay(
             delay.value,
-            withTiming(transY.value, {
-              duration: 200,
-              easing: Easing.out(Easing.ease),
+            withSpring(transY.value, {
+              damping: 14,
+              stiffness: 90,
             }),
           ),
         },

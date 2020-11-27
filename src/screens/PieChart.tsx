@@ -1,14 +1,13 @@
-import React, {useEffect} from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import {Button} from 'react-native';
 import Animated, {
   useSharedValue,
-  useAnimatedStyle,
-  useDerivedValue,
   withTiming,
   Easing,
   useAnimatedProps,
 } from 'react-native-reanimated';
 import {Svg, Circle} from 'react-native-svg';
+
 import Container from '../components/Container';
 
 const RADIUS = 70;
