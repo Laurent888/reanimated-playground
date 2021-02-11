@@ -16,6 +16,7 @@ const BarGraph = () => {
   const [show, setShow] = useState(false);
 
   const startAnimation = () => {
+    console.log('test', JSON.stringify(DATA, null, 2));
     setShow(true);
   };
 

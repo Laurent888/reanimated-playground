@@ -12,6 +12,7 @@ import Practice from '../screens/Practice';
 import Pullios from '../screens/Pullios';
 import Carousel from '../screens/Carousel';
 import ShowList from '../screens/ShowList';
+import Camera from '../screens/Camera';
 
 export type MainStackProps = {
   Choices: undefined;
@@ -25,6 +26,7 @@ export type MainStackProps = {
   Pullios: undefined;
   Carousel: undefined;
   ShowList: undefined;
+  Camera: undefined;
 };
 
 const Stack = createStackNavigator<MainStackProps>();
@@ -69,6 +71,11 @@ const AppNavigator = () => {
       <Stack.Screen
         name="ShowList"
         component={ShowList}
+        options={{gestureEnabled: false}}
+      />
+      <Stack.Screen
+        name="Camera"
+        component={Camera}
         options={{gestureEnabled: false}}
       />
     </Stack.Navigator>

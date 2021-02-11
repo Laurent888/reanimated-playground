@@ -45,6 +45,7 @@ const Choices: React.FC<ChoicesProps> = ({navigation}) => {
         label="ShowList"
         onPress={() => navigation.navigate('ShowList')}
       />
+      <RowButton label="Camera" onPress={() => navigation.navigate('Camera')} />
     </View>
   );
 };

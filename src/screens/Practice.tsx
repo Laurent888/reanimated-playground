@@ -40,8 +40,6 @@ function createSharedVariables() {
   }
   const heights = result;
 
-  console.log('Heights ', heights);
-
   return {
     contentHeights,
     heights,
@@ -148,7 +146,6 @@ function SectionHeader({title, animatedRef, contentHeight, show}) {
       try {
         applyMeasure(await asyncMeasure(animatedRef));
       } catch (e) {
-        console.log(e);
         throw new Error('measure failed: ' + e);
       }
     };

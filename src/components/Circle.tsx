@@ -20,7 +20,6 @@ const PADDING = 20;
 const AnimatedCircle = Animated.createAnimatedComponent(Circle);
 
 const CircleComponent: React.FC<CircleProps> = React.memo(({value = 0}) => {
-  console.log('Render circle');
   const circumference = 120 * 2 * Math.PI;
   const animatedProgress = useSharedValue(0);
 

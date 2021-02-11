@@ -21,11 +21,13 @@
     "react": "16.13.1",
     "react-native": "0.63.3",
     "react-native-gesture-handler": "^1.8.0",
-    "react-native-image-picker": "^2.3.4",
+    "react-native-image-picker": "2.3.4",
     "react-native-reanimated": "^2.0.0-alpha.8",
     "react-native-safe-area-context": "^3.1.8",
     "react-native-screens": "^2.13.0",
+    "react-native-shared-element": "^0.7.0",
     "react-native-svg": "^12.1.0",
+    "react-navigation-shared-element": "^5.0.0-alpha1",
     "react-navigation-stack": "^2.10.1"
   },
   "devDependencies": {

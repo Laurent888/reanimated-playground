@@ -32,8 +32,6 @@ const App = () => {
     }
   }, [isReady]);
 
-  console.log(isReady);
-
   if (!isReady) return null;
 
   return (
