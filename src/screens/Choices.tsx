@@ -1,16 +1,17 @@
 import {StackNavigationProp} from '@react-navigation/stack/lib/typescript/src/types';
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, ScrollView} from 'react-native';
 import RowButton from '../components/RowButton';
 import {MainStackProps} from '../navigation/AppNavigator';
-
 interface ChoicesProps {
   navigation: StackNavigationProp<MainStackProps, 'Choices'>;
 }
 
 const Choices: React.FC<ChoicesProps> = ({navigation}) => {
   return (
-    <View style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.contentContainer}>
       <RowButton
         label="DragNDrop"
         onPress={() => navigation.navigate('dragNDrop')}
@@ -46,7 +47,11 @@ const Choices: React.FC<ChoicesProps> = ({navigation}) => {
         onPress={() => navigation.navigate('ShowList')}
       />
       <RowButton label="Camera" onPress={() => navigation.navigate('Camera')} />
-    </View>
+      <RowButton
+        label="Flatlist"
+        onPress={() => navigation.navigate('flatlist')}
+      />
+    </ScrollView>
   );
 };
 
@@ -56,6 +61,8 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#eee',
     flex: 1,
+  },
+  contentContainer: {
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
   },

@@ -13,6 +13,7 @@ import Pullios from '../screens/Pullios';
 import Carousel from '../screens/Carousel';
 import ShowList from '../screens/ShowList';
 import Camera from '../screens/Camera';
+import Flatlist from '../screens/Flatlist';
 
 export type MainStackProps = {
   Choices: undefined;
@@ -76,6 +77,11 @@ const AppNavigator = () => {
       <Stack.Screen
         name="Camera"
         component={Camera}
+        options={{gestureEnabled: false}}
+      />
+      <Stack.Screen
+        name="flatlist"
+        component={Flatlist}
         options={{gestureEnabled: false}}
       />
     </Stack.Navigator>

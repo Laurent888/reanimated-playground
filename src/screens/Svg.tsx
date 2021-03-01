@@ -1,5 +1,5 @@
-import React from 'react';
-import {Button, StyleSheet, View} from 'react-native';
+import React, {useState} from 'react';
+import {Button, StyleSheet, Text, View} from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -10,8 +10,10 @@ import Animated, {
 } from 'react-native-reanimated';
 import {Svg, Circle} from 'react-native-svg';
 import Container from '../components/Container';
+import StartActivity from '../services/StartActivityTest';
 
 const SvgScreen = () => {
+  const [state, setState] = useState({});
   const rotationZ = useSharedValue(0);
 
   const startRotation = () => {
@@ -31,8 +33,19 @@ const SvgScreen = () => {
     };
   });
 
+  const handlePress = async () => {
+    const res = await StartActivity.getAnswer();
+    setState(res);
+  };
+
   return (
     <Container>
+      <View>
+        <Text style={{backgroundColor: 'lightblue', padding: 10, fontSize: 15}}>
+          {JSON.stringify(state)}
+        </Text>
+      </View>
+      <Button title="NativeTest" onPress={handlePress} />
       <Animated.View style={[styles.svgContainer, rotateAnimation]}>
         <Svg height="200" width="200" viewBox="0 0 200 200">
           <Circle
