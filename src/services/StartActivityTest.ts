@@ -7,6 +7,9 @@ const StartActivity = {
     const res = await StartActivityTest.switchApplication();
     return res;
   },
+  backToGoogle: async () => {
+    StartActivityTest.backToGoogle();
+  },
 };
 
 export default StartActivity;

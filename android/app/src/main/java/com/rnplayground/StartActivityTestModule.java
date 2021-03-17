@@ -3,6 +3,7 @@ package com.rnplayground;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.util.SparseArray;
 
 import androidx.annotation.NonNull;
@@ -23,7 +24,7 @@ public class StartActivityTestModule extends ReactContextBaseJavaModule  {
 
     StartActivityTestModule(ReactApplicationContext context){
         super(context);
-        // context.addActivityEventListener(mActivityEventListener);
+        //context.addActivityEventListener(mActivityEventListener);
     }
 
     @Override
@@ -48,11 +49,10 @@ public class StartActivityTestModule extends ReactContextBaseJavaModule  {
     private final ActivityEventListener mActivityEventListener = new BaseActivityEventListener() {
         @Override
         public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent intent) {
-           if(requestCode == REQUEST_CODE){
                if(resultCode == Activity.RESULT_OK){
                    if(mPromise != null) {
                       // String response = intent.hasExtra("BANKING_APP_ACTIVATION_RESPONSE") ? intent.getStringExtra("BANKING_APP_ACTIVATION_RESPONSE") : "nothing";
-                      String response = "Success";
+                      String response = intent.getStringExtra("STEP_UP_AUTH_CODE");
                        mPromise.resolve(response);
                    }
                } else if (resultCode == Activity.RESULT_CANCELED){
@@ -61,11 +61,10 @@ public class StartActivityTestModule extends ReactContextBaseJavaModule  {
                    mPromise.resolve("other");
                }
 
-
-            }
         mPromise = null;
         }
     };
+
 
 
 
@@ -73,11 +72,22 @@ public class StartActivityTestModule extends ReactContextBaseJavaModule  {
     public void switchApplication(Promise promise) {
         mPromise = promise;
         Activity activity = getReactApplicationContext().getCurrentActivity();
-        Intent intent = getReactApplicationContext().getPackageManager().getLaunchIntentForPackage("com.rocker.app");
-        intent.putExtra("data", "forTest");
-        intent.setFlags(0);
-        activity.startActivityForResult(intent, REQUEST_CODE);
+        // Intent intent = getReactApplicationContext().getPackageManager().getLaunchIntentForPackage("com.rnanimations");
+       Intent intent = new Intent("com.rocker.app.a2a");
+        // intent.putExtra("data", "forTest");
+        // intent.setFlags(0);
+        activity.startActivityForResult(intent, 5 );
 
+    }
+
+    @ReactMethod
+    public void backToGoogle() {
+        Activity activity = getReactApplicationContext().getCurrentActivity();
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra("STEP_UP_RESPONSE", "approved");
+        resultIntent.putExtra("STEP_UP_AUTH_CODE", "kjakldjsal832ujoisjf283ur29u0");
+        activity.setResult(Activity.RESULT_OK, resultIntent);
+        activity.finish();
     }
 
 

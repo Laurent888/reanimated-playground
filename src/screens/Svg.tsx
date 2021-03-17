@@ -13,7 +13,7 @@ import Container from '../components/Container';
 import StartActivity from '../services/StartActivityTest';
 
 const SvgScreen = () => {
-  const [state, setState] = useState({});
+  const [state, setState] = useState<any[]>([]);
   const rotationZ = useSharedValue(0);
 
   const startRotation = () => {
@@ -35,7 +35,7 @@ const SvgScreen = () => {
 
   const handlePress = async () => {
     const res = await StartActivity.getAnswer();
-    setState(res);
+    setState((p) => [...p, res]);
   };
 
   return (
